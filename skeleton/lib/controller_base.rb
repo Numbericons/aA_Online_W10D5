@@ -9,8 +9,9 @@ class ControllerBase
   attr_reader :req, :res, :params
 
   # Setup the controller
-  def initialize(req, res, params = {})
+  def initialize(req, res, route_params = {})
     @req, @res, @params = req, res, params
+    @params = route_params.merge(@req.params)
     @already_built_response = false
   end
 
